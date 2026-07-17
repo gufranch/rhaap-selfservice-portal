@@ -1,0 +1,6 @@
+# Generated credentials — never commit
+portal-creds.json
+auth.json
+*.tgz
+.DS_Store
+__pycache__/

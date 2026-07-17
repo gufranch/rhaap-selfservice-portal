@@ -1,0 +1,29 @@
+# Helm values for the redhat-rhaap-portal chart (chart 2.2.x, charts.openshift.io).
+#
+# - clusterRouterBase: REPLACE with your cluster apps domain
+#   (oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
+# - pluginMode: oci  → the install-dynamic-plugins init container pulls the
+#   Ansible plugins directly from registry.redhat.io as OCI artifacts, using the
+#   <release>-dynamic-plugins-registry-auth secret. The chart DEFAULT is
+#   `tarball`, which expects a separately deployed in-cluster `plugin-registry`
+#   HTTP service and fails with `getaddrinfo ENOTFOUND plugin-registry` if that
+#   service does not exist. OCI mode needs no extra infrastructure.
+# - checkSSL: false → for lab clusters with self-signed ingress certificates.
+#   In production, keep true and trust the CA via NODE_EXTRA_CA_CERTS instead.
+#
+# Maps in this file deep-merge with the chart defaults; only lists replace.
+redhat-developer-hub:
+  global:
+    clusterRouterBase: apps.REPLACE-CLUSTER-DOMAIN
+    pluginMode: oci
+  upstream:
+    backstage:
+      appConfig:
+        ansible:
+          rhaap:
+            checkSSL: false
+        auth:
+          providers:
+            rhaap:
+              production:
+                checkSSL: false

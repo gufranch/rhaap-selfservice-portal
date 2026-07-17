@@ -1,0 +1,21 @@
+# Minimal Ansible Automation Platform 2.6 instance for the self-service portal.
+# Deploys the platform gateway + automation controller (+ their databases).
+# EDA, Hub and Lightspeed are disabled to keep the footprint small — enable
+# them only if you need them (Hub requires RWX-capable storage).
+#
+# NOTE: the component objects use x-kubernetes-preserve-unknown-fields, so
+# `oc explain` does not list the `disabled` field — it is honored regardless.
+apiVersion: aap.ansible.com/v1alpha1
+kind: AnsibleAutomationPlatform
+metadata:
+  name: aap
+  namespace: aap
+spec:
+  controller:
+    disabled: false
+  eda:
+    disabled: true
+  hub:
+    disabled: true
+  lightspeed:
+    disabled: true
