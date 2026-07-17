@@ -1,4 +1,4 @@
-# AAP Self-Service Automation Portal on OpenShift — full setup
+# A Full Setup for AAP Self-Service Automation Portal on OpenShift
 
 End-to-end, battle-tested instructions for deploying the **Red Hat Ansible
 Automation Platform 2.6 self-service automation portal** on OpenShift:
@@ -213,7 +213,7 @@ oc delete pvc --all -n aap        # data volumes, if you want a full wipe
 
 - Installing self-service automation portal (AAP 2.6):
   <https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.6/html-single/installing_self-service_automation_portal/index>
-- Using self-service automation portal — RBAC:
+- Using self-service automation portal - RBAC:
   <https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.6/html/using_self-service_automation_portal/self-service-rbac_aap-self-service-using>
 - Portal Helm chart (`redhat-rhaap-portal`): <https://charts.openshift.io/>
 - Portal plugins source: <https://github.com/ansible/ansible-backstage-plugins>
